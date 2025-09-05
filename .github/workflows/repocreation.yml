@@ -39,6 +39,10 @@ jobs:
           .venv\Scripts\activate
           python repocreation.py
 
+      - name: Wait for 10 seconds
+        run: |
+          Start-Sleep -Seconds 10
+
       - name: Replicate branch policies
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
