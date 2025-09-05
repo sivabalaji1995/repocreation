@@ -3,13 +3,13 @@ import json
 import sys
 import os
 
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # replace with your token
+PAT_TOKEN = os.getenv("PAT_TOKEN")  # replace with your token
 ORG = os.getenv("ORG")
 PARENT_REPO = os.getenv("PARENT_REPO")
 CHILD_REPO = os.getenv("CHILD_REPO")
 
 headers = {
-    "Authorization": f"token {GITHUB_TOKEN}",
+    "Authorization": f"token {PAT_TOKEN}",
     "Accept": "application/vnd.github+json"
 }
 

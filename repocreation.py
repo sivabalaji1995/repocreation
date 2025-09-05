@@ -3,17 +3,17 @@ import os
 import sys
 
 # --- Config from environment variables ---
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # PAT with 'repo' and 'admin:org' scopes
+PAT_TOKEN = os.getenv("PAT_TOKEN")  # PAT with 'repo' and 'admin:org' scopes
 ORG = os.getenv("ORG")                     # org or user account
 PARENT_REPO = os.getenv("PARENT_REPO")     # template repo
 CHILD_REPO = os.getenv("CHILD_REPO")       # new repo name
 
-if not all([GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO]):
-    print("Missing required environment variables: GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO")
+if not all([PAT_TOKEN, ORG, PARENT_REPO, CHILD_REPO]):
+    print("Missing required environment variables: PAT_TOKEN, ORG, PARENT_REPO, CHILD_REPO")
     sys.exit(1)
 
 headers = {
-    "Authorization": f"token {GITHUB_TOKEN}",
+    "Authorization": f"token {PAT_TOKEN}",
     "Accept": "application/vnd.github+json"
 }
 
