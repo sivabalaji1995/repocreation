@@ -70,7 +70,7 @@ for branch in branches:
     parent_rules = get_branch_protection(PARENT_REPO, branch)
     if parent_rules:
         payload = prepare_payload(parent_rules)
-        print(f"Applying rules from {PARENT_REPO}/{branch} → {CHILD_REPO}/{branch}")
+        print(f"Applying rules from {PARENT_REPO}/{branch} to {CHILD_REPO}/{branch}")
         apply_protection(CHILD_REPO, branch, payload)
     else:
         print(f"No protection rules found for {PARENT_REPO}/{branch}, skipping...")
