@@ -30,7 +30,7 @@ jobs:
 
       - name: Create repo
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           ORG: ${{ github.repository_owner }}
           PARENT_REPO: ${{ github.event.inputs.parent_repo }}
           CHILD_REPO: ${{ github.event.inputs.child_repo }}
