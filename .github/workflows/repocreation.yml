@@ -35,7 +35,7 @@ jobs:
           PARENT_REPO: ${{ github.event.inputs.parent_repo }}
           CHILD_REPO: ${{ github.event.inputs.child_repo }}
         run: |
-          write-host "Creating repo $env:CHILD_REPO from template $env:PARENT_REPO in org $env:ORG"
+          write-host "Creating repo ${{ github.event.inputs.child_repo }} from template ${{ github.event.inputs.parent_repo }} in org ${{ github.repository_owner }}"
           .venv\Scripts\activate
           python repocreation.py
 
@@ -46,6 +46,6 @@ jobs:
           PARENT_REPO: ${{ github.event.inputs.parent_repo }}
           CHILD_REPO: ${{ github.event.inputs.child_repo }}
         run: |
-          write-host "Replicating branch policies from $env:PARENT_REPO to $env:CHILD_REPO in org $env:ORG"
+          write-host "Replicating branch policies from ${{ github.event.inputs.parent_repo }} to ${{ github.event.inputs.child_repo }} in org ${{ github.repository_owner }}"
           .venv\Scripts\activate
           python replicate_rules_allbranches.py
