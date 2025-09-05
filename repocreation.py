@@ -1,0 +1,37 @@
+import requests
+import os
+import sys
+
+# --- Config from environment variables ---
+GITHUB_TOKEN = "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"   # PAT with 'repo' and 'admin:org' scopes
+ORG = "sivabalaji1995"                     # org or user account
+PARENT_REPO = "mainrepo"     # template repo
+CHILD_REPO = "test1"      # new repo name
+
+if not all([GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO]):
+    print("❌ Missing required environment variables: GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO")
+    sys.exit(1)
+
+headers = {
+    "Authorization": f"token {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
+
+# --- Create repo from template ---
+print(f"🚀 Creating repo '{CHILD_REPO}' from template '{PARENT_REPO}'...")
+
+url = f"https://api.github.com/repos/{ORG}/{PARENT_REPO}/generate"
+payload = {
+    "owner": ORG,
+    "name": CHILD_REPO,
+    "private": False,   # set to True if you want private repo
+    "include_all_branches": True
+}
+
+resp = requests.post(url, headers=headers, json=payload)
+
+if resp.status_code not in [200, 201]:
+    print(f"❌ Failed to create repo: {resp.status_code}, {resp.text}")
+    sys.exit(1)
+
+print(f"✅ Repo '{CHILD_REPO}' created successfully!")
