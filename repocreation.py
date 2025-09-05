@@ -3,10 +3,10 @@ import os
 import sys
 
 # --- Config from environment variables ---
-GITHUB_TOKEN = "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"   # PAT with 'repo' and 'admin:org' scopes
-ORG = "sivabalaji1995"                     # org or user account
-PARENT_REPO = "mainrepo"     # template repo
-CHILD_REPO = "test1"      # new repo name
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")   # PAT with 'repo' and 'admin:org' scopes
+ORG = os.getenv("ORG")                     # org or user account
+PARENT_REPO = os.getenv("PARENT_REPO")     # template repo
+CHILD_REPO = os.getenv("CHILD_REPO")       # new repo name
 
 if not all([GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO]):
     print("❌ Missing required environment variables: GITHUB_TOKEN, ORG, PARENT_REPO, CHILD_REPO")

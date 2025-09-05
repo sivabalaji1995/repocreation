@@ -1,10 +1,12 @@
 import requests
 import json
+import sys
+import os
 
-GITHUB_TOKEN = "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"   # replace with your token
-ORG = "sivabalaji1995"
-PARENT_REPO = "mainrepo"
-CHILD_REPO = "test1"   # single child repo name
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")  # replace with your token
+ORG = os.getenv("ORG")
+PARENT_REPO = os.getenv("PARENT_REPO")
+CHILD_REPO = os.getenv("CHILD_REPO")
 
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}",
